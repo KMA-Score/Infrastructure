@@ -3,24 +3,24 @@ ready:
 
 # Development config
 up:
-	docker compose -f postgresql/docker-compose.yaml -f keycloak/docker-compose.dev.yaml up -d
+	docker compose -p superkma -f postgresql/docker-compose.yaml -f keycloak/docker-compose.dev.yaml up -d
 
 down:
-	docker compose -f postgresql/docker-compose.yaml -f keycloak/docker-compose.dev.yaml down
+	docker compose -p superkma -f postgresql/docker-compose.yaml -f keycloak/docker-compose.dev.yaml down
 
 clean:
-	docker compose -f postgresql/docker-compose.yaml -f keycloak/docker-compose.dev.yaml down -v
+	docker compose -p superkma -f postgresql/docker-compose.yaml -f keycloak/docker-compose.dev.yaml down -v
 	docker network rm superkma
 	
 
 
 # Production config
 prod-up:
-	docker compose -f postgresql/docker-compose.yaml -f keycloak/docker-compose.yaml up -d
+	docker compose -p superkma -f postgresql/docker-compose.yaml -f keycloak/docker-compose.yaml up -d
 
 prod-down:
-	docker compose -f postgresql/docker-compose.yaml -f keycloak/docker-compose.yaml down
+	docker compose -p superkma -f postgresql/docker-compose.yaml -f keycloak/docker-compose.yaml down
 
 prod-clean:
-	docker compose -f postgresql/docker-compose.yaml -f keycloak/docker-compose.yaml down -v
+	docker compose -p superkma -f postgresql/docker-compose.yaml -f keycloak/docker-compose.yaml down -v
 	docker network rm superkma
