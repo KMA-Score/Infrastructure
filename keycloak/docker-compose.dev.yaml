@@ -3,18 +3,22 @@ version: "3.8"
 services:
   keycloak:
     container_name: superkma-keycloak
-    image: bitnami/keycloak:latest
+    image: quay.io/keycloak/keycloak:latest
+    command: start-dev
     restart: unless-stopped
     depends_on:
       - postgres
     ports:
-      - "8080:8080"
+      - 8443:8443
     environment:
-      - KEYCLOAK_DATABASE_HOST=postgres
-      - KEYCLOAK_DATABASE_USER=keycloak
-      - KEYCLOAK_DATABASE_NAME=keycloak
-      - KEYCLOAK_PRODUCTION=true
-      - KEYCLOAK_PROXY=edge
+      KC_DB: "postgres"
+      KC_DB_URL_HOST: "postgres"
+      KC_DB_USERNAME: "keycloak"
+      KC_DB_URL_DATABASE: "keycloak"
+      KC_HTTPS_CERTIFICATE_FILE: "/opt/keycloak/conf/cert/server.crt.pem"
+      KC_HTTPS_CERTIFICATE_KEY_FILE: "/opt/keycloak/conf/cert/server.key.pem"
+    volumes:
+      - ../keycloak/cert:/opt/keycloak/conf/cert
     env_file:
       - ../.env
     networks:

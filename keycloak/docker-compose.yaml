@@ -3,16 +3,18 @@ version: "3.8"
 services:
   keycloak:
     container_name: superkma-keycloak
-    image: bitnami/keycloak:latest
+    image: quay.io/keycloak/keycloak:latest
+    command: start
     restart: unless-stopped
     depends_on:
       - postgres
     environment:
-      - KEYCLOAK_DATABASE_HOST=postgres
-      - KEYCLOAK_DATABASE_USER=keycloak
-      - KEYCLOAK_DATABASE_NAME=keycloak
-      - KEYCLOAK_PRODUCTION=true
-      - KEYCLOAK_PROXY=edge
+      KC_DB: "postgres"
+      KC_DB_URL_HOST: "postgres"
+      KC_DB_USERNAME: "keycloak"
+      KC_DB_URL_DATABASE: "keycloak"
+      KC_PROXY: "edge"
+      PROXY_ADDRESS_FORWARDING: true
     env_file:
       - ../.env
     networks:
