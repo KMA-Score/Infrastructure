@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  keycloak:
+    image: bitnami/keycloak:22.0.1
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    environment:
+      - KEYCLOAK_DATABASE_HOST=postgres
+      - KEYCLOAK_DATABASE_USER=keycloak
+      - KEYCLOAK_DATABASE_NAME=keycloak
+      - KEYCLOAK_PRODUCTION=true
+      - KEYCLOAK_PROXY=edge
+    env_file:
+      - ../.env
+    networks:
+      - skma
+      - proxy
+
+networks:
+  skma:
+    name: superkma
+    external: true
+  
+  proxy:
+    external: true
+    name: "nginx-pm"
