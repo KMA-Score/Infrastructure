@@ -3,7 +3,7 @@ version: "3.8"
 services:
   keycloak:
     container_name: superkma-keycloak
-    image: bitnami/keycloak:22.0.1
+    image: bitnami/keycloak:latest
     restart: unless-stopped
     depends_on:
       - postgres
