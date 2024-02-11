@@ -1,5 +1,5 @@
 ready:
-	docker network create --subnet=172.37.0.0/16 --ip-range=172.37.5.10/24 --gateway=172.37.5.254 superkma
+	docker network create --subnet=172.37.0.0/16 --ip-range=172.37.5.0/24 --gateway=172.37.5.254 superkma
 
 # Development config
 up:
