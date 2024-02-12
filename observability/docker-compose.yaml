@@ -34,7 +34,7 @@ services:
     container_name: prometheus
     volumes:
       - prometheus_data:/prometheus
-      - ./prometheus:/etc/prometheus
+      - ../observability/prometheus:/etc/prometheus
     restart: unless-stopped
     depends_on:
       - node-exporter
@@ -44,7 +44,7 @@ services:
     image: grafana/grafana:latest
     volumes:
       - grafana_data:/var/lib/grafana
-      - ./grafana:/etc/grafana/provisioning/
+      - ../observability/grafana:/etc/grafana/provisioning/
     restart: unless-stopped
     networks:
       - proxy
