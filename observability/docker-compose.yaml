@@ -15,6 +15,8 @@ services:
       - '--path.sysfs=/host/sys'
       - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'
     restart: unless-stopped
+    networks:
+      - observability
 
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:latest
@@ -28,6 +30,8 @@ services:
       - /var/lib/docker:/var/lib/docker:ro
     command:
       - --docker_only
+    networks:
+      - observability
 
   prometheus:
     image: prom/prometheus:latest
@@ -39,6 +43,8 @@ services:
     depends_on:
       - node-exporter
       - cadvisor
+    networks:
+      - observability
 
   grafana:
     image: grafana/grafana:latest
@@ -48,6 +54,7 @@ services:
     restart: unless-stopped
     networks:
       - proxy
+      - observability
 
 volumes:
   prometheus_data:
@@ -57,3 +64,5 @@ networks:
   proxy:
     external: true
     name: "nginx-pm"
+
+  observability:
