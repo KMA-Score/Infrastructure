@@ -44,6 +44,7 @@ services:
       - node-exporter
       - cadvisor
     networks:
+      - proxy
       - observability
 
   grafana:

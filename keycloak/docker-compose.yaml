@@ -16,6 +16,7 @@ services:
       KC_PROXY: "edge"
       PROXY_ADDRESS_FORWARDING: true
       KC_HEALTH_ENABLED: true
+      KC_METRICS_ENABLED: true
     env_file:
       - ../.env
     networks:
