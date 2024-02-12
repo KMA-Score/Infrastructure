@@ -16,11 +16,11 @@ clean:
 
 # Production config
 prod-up:
-	docker compose -p superkma -f postgresql/docker-compose.yaml -f keycloak/docker-compose.yaml up -d
+	docker compose -p superkma -f postgresql/docker-compose.yaml -f keycloak/docker-compose.yaml -f observability/docker-compose.yaml up -d
 
 prod-down:
-	docker compose -p superkma -f postgresql/docker-compose.yaml -f keycloak/docker-compose.yaml down
+	docker compose -p superkma -f postgresql/docker-compose.yaml -f keycloak/docker-compose.yaml -f observability/docker-compose.yaml down
 
 prod-clean:
-	docker compose -p superkma -f postgresql/docker-compose.yaml -f keycloak/docker-compose.yaml down -v
+	docker compose -p superkma -f postgresql/docker-compose.yaml -f keycloak/docker-compose.yaml -f observability/docker-compose.yaml down -v
 	docker network rm superkma
