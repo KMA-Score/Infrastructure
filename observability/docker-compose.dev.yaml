@@ -2,42 +2,42 @@ version: "3.8"
 
 include:
   - path:
-    - ../observability/requires.yaml
+    - observability/requires.yaml
 
 services:
   node-exporter:
     extends:
-      file: ../observability/services.yaml
+      file: observability/services.yaml
       service: node-exporter
 
   cadvisor:
     extends:
-      file: ../observability/services.yaml
+      file: observability/services.yaml
       service: cadvisor
 
   prometheus:
     extends:
-      file: ../observability/services.yaml
+      file: observability/services.yaml
       service: prometheus
 
   tempo:
     extends:
-      file: ../observability/services.yaml
+      file: observability/services.yaml
       service: tempo
 
   loki:
     extends:
-      file: ../observability/services.yaml
+      file: observability/services.yaml
       service: loki
 
   promtail:
     extends:
-      file: ../observability/services.yaml
+      file: observability/services.yaml
       service: promtail
 
   otel-collector:
     extends:
-      file: ../observability/services.yaml
+      file: observability/services.yaml
       service: otel-collector
     ports:
       - 1888:1888 # pprof extension
@@ -50,7 +50,7 @@ services:
 
   grafana:
     extends:
-      file: ../observability/services.yaml
+      file: observability/services.yaml
       service: grafana
     ports:
       - 3000:3000

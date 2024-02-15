@@ -12,6 +12,8 @@ services:
       - ./init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
     ports:
       - "45432:5432"
+    env_file:
+      - ./.env
     networks:
       - skma
 

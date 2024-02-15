@@ -1,5 +1,7 @@
 version: "3.8"
 
+name: superkma
+
 include:
   - path:
     - postgresql/docker-compose.yaml
