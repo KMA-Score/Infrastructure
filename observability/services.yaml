@@ -30,8 +30,8 @@ services:
       - /var/lib/docker:/var/lib/docker:ro
     command:
       - --docker_only
-    # networks:
-    #   - observability
+    networks:
+      - observability
 
   prometheus:
     image: prom/prometheus:latest
@@ -57,5 +57,5 @@ services:
       - ../observability/grafana:/etc/grafana/provisioning/
     restart: unless-stopped
     networks:
-      # - observability
+      - observability
       - skma
