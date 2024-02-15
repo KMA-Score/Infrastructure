@@ -2,6 +2,8 @@ ready:
 	docker network create --subnet=172.37.0.0/16 --ip-range=172.37.5.0/24 --gateway=172.37.5.254 superkma
 
 # Development config
+config:
+	docker compose -f docker-compose.dev.yaml config
 up:
 	docker compose -f docker-compose.dev.yaml up -d
 
@@ -13,6 +15,9 @@ clean:
 	docker network rm superkma
 	
 # Production config
+prod-config:
+	docker compose config
+	
 prod-up:
 	docker compose up -d
 

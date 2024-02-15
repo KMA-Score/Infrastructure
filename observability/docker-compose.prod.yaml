@@ -2,27 +2,27 @@ version: "3.8"
 
 include:
   - path:
-    - ../observability/requires.yaml
+    - observability/requires.yaml
 
 services:
   node-exporter:
     extends:
-      file: ../observability/services.yaml
+      file: observability/services.yaml
       service: node-exporter
 
   cadvisor:
     extends:
-      file: ../observability/services.yaml
+      file: observability/services.yaml
       service: cadvisor
 
   prometheus:
     extends:
-      file: ../observability/services.yaml
+      file: observability/services.yaml
       service: prometheus
 
   # otel-collector:
   #   extends:
-  #     file: ../observability/services.yaml
+  #     file: observability/services.yaml
   #     service: otel-collector
   #   networks:
   #     - observability
@@ -30,7 +30,7 @@ services:
 
   grafana:
     extends:
-      file: ../observability/services.yaml
+      file: observability/services.yaml
       service: grafana
     networks:
       - proxy

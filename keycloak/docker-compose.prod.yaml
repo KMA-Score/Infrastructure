@@ -3,7 +3,7 @@ version: "3.8"
 services:
   keycloak:
     extends:
-      file: ../keycloak/compose-base.yaml
+      file: keycloak/compose-base.yaml
       service: keycloak
     environment:
       KC_PROXY: "edge"
