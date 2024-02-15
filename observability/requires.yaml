@@ -1,0 +1,12 @@
+volumes:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  observability:
+    name: observability
+    driver: bridge
+
+  skma:
+    name: superkma
+    external: true

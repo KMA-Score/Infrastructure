@@ -30,8 +30,8 @@ services:
       - /var/lib/docker:/var/lib/docker:ro
     command:
       - --docker_only
-    networks:
-      - observability
+    # networks:
+    #   - observability
 
   prometheus:
     image: prom/prometheus:latest
@@ -46,7 +46,6 @@ services:
     ports:
       - 9090:9090
     networks:
-      - proxy
       - observability
       - skma
 
@@ -58,21 +57,5 @@ services:
       - ../observability/grafana:/etc/grafana/provisioning/
     restart: unless-stopped
     networks:
-      - proxy
-      - observability
+      # - observability
       - skma
-
-volumes:
-  prometheus_data:
-  grafana_data:
-
-networks:
-  proxy:
-    external: true
-    name: "nginx-pm"
-
-  observability:
-
-  skma:
-    name: superkma
-    external: true

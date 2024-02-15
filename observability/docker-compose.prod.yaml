@@ -1,0 +1,26 @@
+version: "3.8"
+
+include:
+  - path:
+    - ../observability/requires.yaml
+
+services:
+  node-exporter:
+    extends:
+      file: ../observability/services.yaml
+      service: node-exporter
+
+  cadvisor:
+    extends:
+      file: ../observability/services.yaml
+      service: cadvisor
+
+  prometheus:
+    extends:
+      file: ../observability/services.yaml
+      service: prometheus
+
+  grafana:
+    extends:
+      file: ../observability/services.yaml
+      service: grafana

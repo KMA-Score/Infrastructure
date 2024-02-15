@@ -1,0 +1,4 @@
+include:
+  - path:
+    - postgresql/docker-compose.yaml
+    - keycloak/docker-compose.prod.yaml
