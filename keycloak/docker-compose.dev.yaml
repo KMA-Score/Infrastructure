@@ -10,7 +10,5 @@ services:
     environment:
       KC_HTTPS_CERTIFICATE_FILE: "/opt/keycloak/conf/cert/server.crt.pem"
       KC_HTTPS_CERTIFICATE_KEY_FILE: "/opt/keycloak/conf/cert/server.key.pem"
-    env_file:
-      - ./.env
     volumes:
       - ../keycloak/cert:/opt/keycloak/conf/cert
