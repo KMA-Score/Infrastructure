@@ -22,3 +22,11 @@ scrape_configs:
     scrape_interval: 10s
     static_configs:
     - targets: ['superkma-keycloak:8080']
+
+  - job_name: 'tempo'
+    static_configs:
+    - targets: ['tempo:3100']
+
+  - job_name: 'loki'
+    static_configs:
+    - targets: ['loki:3100']

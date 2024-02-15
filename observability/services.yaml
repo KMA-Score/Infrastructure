@@ -49,6 +49,56 @@ services:
       - observability
       - skma
 
+  tempo:
+    image: grafana/tempo:latest
+    command: [ "-config.file=/etc/tempo.yaml" ]
+    volumes:
+      - ../observability/tempo/tempo.yaml:/etc/tempo.yaml
+      - tempo_data:/tmp/tempo
+    networks:
+      - observability
+
+  loki:
+    image: grafana/loki:latest
+    command: -config.file=/etc/loki/loki.yaml
+    ports:
+      - "3100:3100" # loki needs to be exposed so it receives logs
+    user: "0"
+    environment:
+      - JAEGER_AGENT_HOST=tempo
+      - JAEGER_ENDPOINT=http://tempo:14268/api/traces # send traces to Tempo
+      - JAEGER_SAMPLER_TYPE=const
+      - JAEGER_SAMPLER_PARAM=1
+    volumes:
+      - ../observability/loki/loki.yaml:/etc/loki/loki.yaml
+      - loki_data:/tmp/loki
+    networks:
+      - observability
+      - skma
+
+  promtail:
+    image: grafana/promtail:latest
+    volumes:
+      - ../observability/promtail/config.yaml:/etc/promtail/config.yaml:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: -config.file=/etc/promtail/config.yaml
+    depends_on:
+      - loki
+    networks:
+      - observability
+  
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib
+    volumes:
+      - ../observability/otel/config.yaml:/etc/otelcol-contrib/config.yaml
+    depends_on:
+      - loki
+      - tempo
+      - prometheus
+    networks:
+      - observability
+      - skma
+
   grafana:
     image: grafana/grafana:latest
     container_name: grafana

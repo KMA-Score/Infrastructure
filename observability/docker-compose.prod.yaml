@@ -20,7 +20,22 @@ services:
       file: ../observability/services.yaml
       service: prometheus
 
+  # otel-collector:
+  #   extends:
+  #     file: ../observability/services.yaml
+  #     service: otel-collector
+  #   networks:
+  #     - observability
+  #     - proxy
+
   grafana:
     extends:
       file: ../observability/services.yaml
       service: grafana
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
+    name: "nginx-pm"
