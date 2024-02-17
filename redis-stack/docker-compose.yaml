@@ -4,6 +4,7 @@ services:
   redis:
     image: redis/redis-stack-server:latest
     container_name: superkma-redis
+    restart: unless-stopped
     ports:
       - "46379:6379"
     volumes:

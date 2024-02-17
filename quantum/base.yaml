@@ -5,6 +5,9 @@ services:
     container_name: quantum
     restart: unless-stopped
     image: ghcr.io/kma-score/quantum:latest
+    depends_on:
+      - redis
+      - mongodb
     env_file:
       - ../.env/.quantum.env
     networks:
