@@ -7,3 +7,10 @@ services:
     image: ghcr.io/kma-score/quantum:latest
     env_file:
       - ../.env/.quantum.env
+    networks:
+      - skma
+
+networks:
+  skma:
+    name: superkma
+    external: true

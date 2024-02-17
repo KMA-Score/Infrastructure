@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  redis:
+    image: redis/redis-stack-server:latest
+    container_name: superkma-redis
+    ports:
+      - "46379:6379"
+    volumes:
+      - redis-data:/data
+    env_file:
+      - ./.env/.redis.env
+    networks:
+      - skma
+
+volumes:
+  redis-data:
+
+networks:
+  skma:
+    name: superkma
+    external: true

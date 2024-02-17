@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  mongodb:
+    container_name: superkma-mongodb
+    image: mongo:7
+    restart: unless-stopped
+    ports:
+      - "47017:27017"
+    volumes:
+      - mongo_data:/data/db
+    env_file:
+      - ./.env/.mongodb.env
+    networks:
+      - skma
+
+volumes:
+  mongo_data:
+
+networks:
+  skma:
+    name: superkma
+    external: true

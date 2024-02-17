@@ -5,6 +5,8 @@ name: superkma
 include:
   - path:
     - postgresql/docker-compose.yaml
+    - redis-stack/docker-compose.yaml
+    - mongodb/docker-compose.yaml
     - keycloak/docker-compose.dev.yaml
     - quantum/docker-compose.dev.yaml
     - observability/docker-compose.dev.yaml
