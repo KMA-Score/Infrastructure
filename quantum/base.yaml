@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   quantum:
-    container_name: quantum
+    container_name: kma-quantum
     restart: unless-stopped
     image: ghcr.io/kma-score/quantum:latest
     depends_on:
