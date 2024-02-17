@@ -9,13 +9,18 @@ services:
       PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
       - postgres:/var/lib/postgresql/data/pgdata
-      - ./init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
+      - ./postgresql/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
     ports:
       - "45432:5432"
     env_file:
       - ./.env/.postgresql.env
     networks:
       - skma
+    healthcheck:
+      test: ["CMD-SHELL", "su -c 'pg_isready -U postgres' postgres"]
+      interval: 30s
+      timeout: 30s
+      retries: 3
 
 volumes:
   postgres:

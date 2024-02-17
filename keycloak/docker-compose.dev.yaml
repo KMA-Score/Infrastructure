@@ -11,4 +11,4 @@ services:
       KC_HTTPS_CERTIFICATE_FILE: "/opt/keycloak/conf/cert/server.crt.pem"
       KC_HTTPS_CERTIFICATE_KEY_FILE: "/opt/keycloak/conf/cert/server.key.pem"
     volumes:
-      - ../keycloak/cert:/opt/keycloak/conf/cert
+      - ./keycloak/cert:/opt/keycloak/conf/cert

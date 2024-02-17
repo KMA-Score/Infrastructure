@@ -12,6 +12,15 @@ services:
       - ../.env/.quantum.env
     networks:
       - skma
+    environment:
+      DATABASE_URI: mongodb://superkma-mongodb:27017
+      REDIS_HOST: superkma-redis
+      REDIS_PORT: 6379
+    healthcheck:
+      test: ["CMD", "wget", "localhost:3000/health -q -O - > /dev/null 2>&1"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
 
 networks:
   skma:
