@@ -27,3 +27,6 @@ prod-down:
 prod-clean:
 	docker compose down -v
 	docker network rm superkma
+
+pull:
+	docker compose pull
