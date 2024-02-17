@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  quantum:
+    extends:
+      file: ./base.yaml
+      service: quantum
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
+    name: "nginx-pm"

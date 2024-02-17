@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  quantum:
+    extends:
+      file: ./base.yaml
+      service: quantum
+    ports:
+      - 4000:3000
+      - 50000:50000
