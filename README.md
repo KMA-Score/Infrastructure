@@ -20,7 +20,7 @@ git clone https://github.com/KMA-Score/Infrastructure.git
 Copy example variables from .env.example and edit.
 
 ```bash
-cp .env.example .env
+cp -r .env.example .env
 ```
 
 ## Development

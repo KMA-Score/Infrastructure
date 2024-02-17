@@ -9,4 +9,3 @@ include:
     - quantum/docker-compose.dev.yaml
     - observability/docker-compose.dev.yaml
     project_directory: .
-    env_file: .env

@@ -6,4 +6,4 @@ services:
     restart: unless-stopped
     image: ghcr.io/kma-score/quantum:latest
     env_file:
-      - ../.quantum.env
+      - ../.env/.quantum.env

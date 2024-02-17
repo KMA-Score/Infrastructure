@@ -13,7 +13,7 @@ services:
     ports:
       - "45432:5432"
     env_file:
-      - ./.env
+      - ./.env/.postgresql.env
     networks:
       - skma
 
