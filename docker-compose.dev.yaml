@@ -6,6 +6,7 @@ include:
   - path:
     - postgresql/docker-compose.yaml
     - keycloak/docker-compose.dev.yaml
+    - quantum/docker-compose.dev.yaml
     - observability/docker-compose.dev.yaml
     project_directory: .
     env_file: .env
