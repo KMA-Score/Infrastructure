@@ -14,7 +14,7 @@ services:
     networks:
       - skma
     healthcheck:
-      test: ["CMD","mongo", "--eval", "db.adminCommand('ping')"]
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
       interval: 30s
       timeout: 10s
       retries: 5
